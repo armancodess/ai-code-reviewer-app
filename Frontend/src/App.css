@@ -1,0 +1,273 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  background-color: #2f2f2f;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+}
+
+main {
+  height: 100%;
+  width: 100%;
+  padding: 1.5rem;
+  display: flex;
+  gap: 1.5rem;
+}
+
+/* LEFT AND RIGHT PANELS */
+main .left,
+main .right {
+  height: 100%;
+  flex-basis: 50%;
+  border-radius: 0.7rem;
+}
+
+/* LEFT SIDE */
+main .left {
+  background-color: #000;
+  position: relative;
+  border: 2px solid #777;
+  overflow: hidden;
+}
+
+/* LEFT CODE EDITOR */
+.code-editor {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  background-color: #000;
+  overflow: auto;
+}
+
+/* Highlight layer and textarea layer */
+.code-highlight,
+.code-input {
+  min-height: 100%;
+  width: 100%;
+  padding: 1.5rem;
+  font-family: "Fira Code", "SF Mono", Consolas, monospace;
+  font-size: 1rem;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  tab-size: 2;
+}
+
+/* Prism highlighted layer */
+.code-highlight {
+  margin: 0;
+  color: white;
+  background-color: #000;
+  pointer-events: none;
+}
+
+.code-highlight code {
+  font-family: inherit;
+  background: transparent;
+}
+
+/* Actual editable textarea layer */
+.code-input {
+  position: absolute;
+  inset: 0;
+  color: transparent;
+  background: transparent;
+  caret-color: white;
+  border: none;
+  outline: none;
+  resize: none;
+  overflow: hidden;
+}
+
+/* REVIEW BUTTON */
+main .left .review {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  background-color: rgb(219, 219, 248);
+  color: #000;
+  padding: 0.5rem 2rem;
+  border-radius: 0.7rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  user-select: none;
+  border: none;
+  z-index: 10;
+}
+
+main .left .review:hover {
+  background-color: rgb(200, 200, 245);
+}
+
+main .left .review:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* RIGHT SIDE */
+main .right {
+  background-color: rgb(58, 58, 58);
+  color: white;
+  padding: 2.2rem;
+  overflow-y: auto;
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+/* REVIEW OUTPUT */
+.review-output {
+  color: #f3f4f6;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  max-width: 100%;
+}
+
+/* HEADINGS */
+.review-output h1,
+.review-output h2,
+.review-output h3 {
+  color: #ffffff;
+  font-weight: 800;
+  margin-top: 1.4rem;
+  margin-bottom: 0.7rem;
+  line-height: 1.3;
+}
+
+.review-output h1 {
+  font-size: 1.45rem;
+}
+
+.review-output h2 {
+  font-size: 1.3rem;
+}
+
+.review-output h3 {
+  font-size: 1.1rem;
+}
+
+/* TEXT */
+.review-output p {
+  margin-bottom: 0.9rem;
+  color: #f1f5f9;
+}
+
+/* LISTS */
+.review-output ul,
+.review-output ol {
+  padding-left: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.review-output li {
+  margin-bottom: 0.55rem;
+  color: #f1f5f9;
+}
+
+/* BOLD */
+.review-output strong {
+  color: #ffffff;
+  font-weight: 800;
+}
+
+/* INLINE CODE */
+.review-output code {
+  font-family: "Fira Code", "SF Mono", Consolas, monospace;
+  background-color: #34315f;
+  color: #ffffff;
+  padding: 0.15rem 0.4rem;
+  border-radius: 0.25rem;
+  font-size: 0.85rem;
+}
+
+/* CODE BLOCK */
+.review-output pre {
+  background-color: #0d1117;
+  padding: 1rem;
+  border-radius: 0.6rem;
+  overflow-x: auto;
+  margin: 1rem 0;
+  border: 1px solid #30363d;
+}
+
+/* Code inside block */
+.review-output pre code {
+  background: transparent;
+  padding: 0;
+  color: #c9d1d9;
+  font-size: 0.9rem;
+  font-family: "Fira Code", "SF Mono", Consolas, monospace;
+}
+
+/* Highlight.js support */
+.review-output .hljs {
+  background: transparent;
+  color: #c9d1d9;
+}
+
+/* Prevent inline-code style from affecting code blocks */
+.review-output pre .hljs,
+.review-output pre code.hljs {
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+}
+
+/* SCROLLBAR */
+.code-editor::-webkit-scrollbar,
+main .right::-webkit-scrollbar {
+  width: 8px;
+}
+
+.code-editor::-webkit-scrollbar-track,
+main .right::-webkit-scrollbar-track {
+  background: #222;
+}
+
+.code-editor::-webkit-scrollbar-thumb,
+main .right::-webkit-scrollbar-thumb {
+  background: #777;
+  border-radius: 10px;
+}
+
+.code-editor::-webkit-scrollbar-thumb:hover,
+main .right::-webkit-scrollbar-thumb:hover {
+  background: #999;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  main {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  main .left,
+  main .right {
+    flex-basis: 50%;
+    width: 100%;
+  }
+
+  .code-highlight,
+  .code-input,
+  .review-output,
+  main .right {
+    font-size: 0.85rem;
+  }
+
+  main .left .review {
+    font-size: 0.85rem;
+    padding: 0.45rem 1.5rem;
+  }
+}
