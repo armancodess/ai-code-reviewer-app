@@ -2,10 +2,13 @@ require("dotenv").config();
 
 const app = require("./src/app");
 
-const PORT = process.env.PORT || 10000;
+const PORT = process.env.PORT;
 
-console.log("Loaded Groq Key:", process.env.GROQ_API_KEY?.slice(0, 10));
+if (!PORT) {
+  console.error("❌ PORT is not defined by environment");
+  process.exit(1);
+}
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`✅ Server running on port ${PORT}`);
 });
