@@ -13,7 +13,7 @@ marked.setOptions({
 });
 
 const BACKEND_URL =
-  import.meta.env.VITE_BACKEND_URL || "http://localhost:3000";
+  import.meta.env.VITE_BACKEND_URL || "https://ai-code-reviewer-app-7yqo.onrender.com";
 
 function App() {
   const [code, setCode] = useState(`function sum() {
