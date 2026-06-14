@@ -2,7 +2,7 @@
 
 AI Code Reviewer is a full-stack web application that reviews code using AI and provides structured feedback, bug detection, best practice suggestions, and code improvements.
 
-🔗 **Live Demo:** https://your-vercel-app-url.vercel.app
+🔗 **Live Demo:** https://ai-code-reviewer-app-4ze6lq6lt-armancodess-projects.vercel.app/
 
 ## Tech Stack
 
