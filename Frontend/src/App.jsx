@@ -12,6 +12,9 @@ marked.setOptions({
   breaks: true,
 });
 
+const BACKEND_URL =
+  import.meta.env.VITE_BACKEND_URL || "http://localhost:3000";
+
 function App() {
   const [code, setCode] = useState(`function sum() {
   return 1 + 1;
@@ -36,7 +39,7 @@ function App() {
       setLoading(true);
       setReview("Reviewing code...");
 
-      const response = await axios.post("http://localhost:3000/ai/get-review", {
+      const response = await axios.post(`${BACKEND_URL}/ai/get-review`, {
         code,
       });
 
@@ -58,7 +61,7 @@ function App() {
         setReview("⚠️ " + error.response.data);
       } else if (error.request) {
         setReview(
-          "⚠️ Backend server is not responding. Check if backend is running on port 3000."
+          "⚠️ Backend server is not responding. Check if your backend URL is correct."
         );
       } else {
         setReview("⚠️ Something went wrong.");
